@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, Instagram, Youtube, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -100,6 +101,7 @@ const Header = () => {
                 }`} />
               </Link>
             ))}
+            <ThemeToggle />
             <Link to="/book-consultation">
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6">
                 Book Consultation
@@ -141,20 +143,23 @@ const Header = () => {
                 </Button>
               </Link>
               
-              {/* Mobile social links */}
-              <div className="flex items-center gap-4 pt-4 border-t border-border">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </a>
-                ))}
+              {/* Mobile social links and theme toggle */}
+              <div className="flex items-center justify-between pt-4 border-t border-border">
+                <div className="flex items-center gap-4">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={social.label}
+                    >
+                      <social.icon className="w-5 h-5" />
+                    </a>
+                  ))}
+                </div>
+                <ThemeToggle />
               </div>
             </div>
           </div>
